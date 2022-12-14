@@ -1,0 +1,7 @@
+{
+    "QUIZ_SERVICE": "http://localhost:8092",
+    "USER_SERVICE": "http://localhost:8091",
+    "EXTRACTOR_SERVICE": "http://localhost:8093",
+    "RESULT_SERVICE": "http://localhost:8090",
+    "COMMENT_SERVICE": "http://localhost:8094"
+}

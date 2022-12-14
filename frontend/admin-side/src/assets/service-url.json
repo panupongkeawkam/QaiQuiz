@@ -1,0 +1,4 @@
+{
+    "QUIZ_SERVICE": "http://localhost:8092",
+    "EXTRACTOR_SERVICE": "http://localhost:8093"
+}
