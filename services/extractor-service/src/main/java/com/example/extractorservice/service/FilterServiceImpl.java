@@ -1,12 +1,7 @@
 package com.example.extractorservice.service;
 
-import com.example.extractorservice.model.QuestionModel;
 import com.proto.data.*;
 import io.grpc.stub.StreamObserver;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FilterServiceImpl extends FilterServiceGrpc.FilterServiceImplBase {
 

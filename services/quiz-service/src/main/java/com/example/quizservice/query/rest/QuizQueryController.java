@@ -1,6 +1,5 @@
 package com.example.quizservice.query.rest;
 
-import com.example.quizservice.model.Question;
 import com.example.quizservice.pojo.Quiz;
 import com.example.quizservice.query.FindAllQuizQuery;
 import com.example.quizservice.query.FindQuizByQuizIdQuery;

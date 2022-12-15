@@ -2,7 +2,6 @@ package com.example.quizservice.repository;
 
 import com.example.quizservice.pojo.Quiz;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,18 +1,12 @@
 package com.example.quizservice.repository;
 
-import com.example.quizservice.command.CreateQuizCommand;
 import com.example.quizservice.query.FindAllQuizQuery;
-import com.example.quizservice.rest.CreateQuizRestModel;
 import com.example.quizservice.pojo.Quiz;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class QuizService {

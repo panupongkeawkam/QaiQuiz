@@ -1,18 +1,11 @@
 package com.example.quizservice.event;
 
-import com.example.quizservice.model.Question;
 import com.example.quizservice.pojo.Quiz;
-import com.example.quizservice.repository.QuizService;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
 
 @Component
 public class EventsHandler {
@@ -33,7 +26,6 @@ public class EventsHandler {
                 .category(quizCreatedEvent.getCategory())
                 .questions(quizCreatedEvent.getQuestions())
                 .build();
-
         rabbitTemplate.convertAndSend("Quiz", "create-quiz", quiz);
     }
 

@@ -5,7 +5,6 @@ import com.proto.data.Quiz;
 import com.proto.data.RequestSearchQuiz;
 import com.proto.data.SearchServiceGrpc;
 import io.grpc.stub.StreamObserver;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 public class SearchServiceImpl extends SearchServiceGrpc.SearchServiceImplBase {
 

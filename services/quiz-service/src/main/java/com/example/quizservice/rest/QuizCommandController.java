@@ -37,7 +37,7 @@ public class QuizCommandController {
     public QuizModel createQuiz(@RequestBody CreateQuizRestModel quizRestModel) {
         String quizId = quizIdGenerator(UUID.randomUUID().toString());
         boolean isTitleExist = isQuizTitleExist(quizRestModel.getTitle());
-        if (isTitleExist) {
+        if(isTitleExist) {
             throw new IllegalArgumentException("Quiz title is used.");
         }
         List<Question> questions = new ArrayList<>();
@@ -49,15 +49,15 @@ public class QuizCommandController {
                 .questions(questions)
                 .build();
 
-        try {
-            String _id = commandGateway.sendAndWait(createQuizCommand);
-            return QuizModel.builder()
-                    ._id(_id)
-                    .category(createQuizCommand.getCategory())
-                    .title(createQuizCommand.getTitle())
-                    .createDateTime(createQuizCommand.getCreateDateTime())
-                    .questions(createQuizCommand.getQuestions())
-                    .build();
+        try{
+        String _id = commandGateway.sendAndWait(createQuizCommand);
+        return QuizModel.builder()
+                ._id(_id)
+                .category(createQuizCommand.getCategory())
+                .title(createQuizCommand.getTitle())
+                .createDateTime(createQuizCommand.getCreateDateTime())
+                .questions(createQuizCommand.getQuestions())
+                .build();
         } catch (Exception ex) {
             throw new IllegalArgumentException(ex.getMessage());
         }
@@ -65,7 +65,6 @@ public class QuizCommandController {
 
     @PutMapping(consumes = "application/json")
     public QuizModel addQuestion(@RequestBody AddQuestionRestModel restModel) {
-        System.out.println(restModel);
         Quiz quiz = findQuiz(restModel.getQuizId());
         Question question = Question.builder()
                 .title(restModel.getQuestion().getTitle())
@@ -74,7 +73,7 @@ public class QuizCommandController {
                 .build();
         quiz.getQuestions().add(question);
         QuizModel quizModel;
-        try {
+        try{
             AddQuestionCommand command = AddQuestionCommand.builder()
                     .quiz(quiz)
                     ._id(quiz.get_id())
@@ -99,7 +98,7 @@ public class QuizCommandController {
                 .aggregateId(UUID.randomUUID().toString())
                 .quizId(model.getQuizId())
                 .build();
-        try {
+        try{
             commandGateway.send(command);
             return true;
         } catch (Exception ex) {
@@ -109,18 +108,18 @@ public class QuizCommandController {
 
     @DeleteMapping("/question")
     @CrossOrigin
-    public Boolean deleteQuestion(@RequestBody DeleteQuestionRestModel model) {
+    public Boolean deleteQuestion(@RequestBody DeleteQuestionRestModel model){
         FindQuizByQuizIdQuery query = FindQuizByQuizIdQuery.builder()
                 ._id(model.getQuizId())
                 .build();
         Quiz quiz = queryGateway.query(query, ResponseTypes.instanceOf(Quiz.class)).join();
-        if (quiz != null) {
+        if(quiz != null) {
             DeleteQuestionCommand command = DeleteQuestionCommand.builder()
                     .aggregateId(UUID.randomUUID().toString())
                     .quiz(quiz)
                     .questionIndex(model.getQuestionIndex())
                     .build();
-            try {
+            try{
                 commandGateway.send(command);
                 return true;
             } catch (Exception ex) {
@@ -136,7 +135,7 @@ public class QuizCommandController {
                 .build();
         boolean isQuizExist = queryGateway.query(query, ResponseTypes.instanceOf(Quiz.class)).join() != null;
 
-        if (isQuizExist) {
+        if(isQuizExist) {
             quizIdGenerator(UUID.randomUUID().toString());
         }
 

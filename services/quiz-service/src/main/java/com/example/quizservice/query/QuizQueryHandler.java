@@ -11,12 +11,10 @@ import java.util.List;
 
 @Component
 public class QuizQueryHandler {
-    private final QuizService quizService;
     private final RabbitTemplate rabbitTemplate;
 
     @Autowired
-    public QuizQueryHandler(QuizService quizService, RabbitTemplate rabbitTemplate) {
-        this.quizService = quizService;
+    public QuizQueryHandler(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 

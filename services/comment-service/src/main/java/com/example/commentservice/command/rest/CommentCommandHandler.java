@@ -48,10 +48,10 @@ public class CommentCommandHandler {
                     .createDateTime(command.getCreateDateTime())
                     .message(command.getMessage())
                     .build();
+            return comment;
         } catch (Exception ex) {
             throw new IllegalArgumentException(ex.getMessage());
         }
-        return comment;
     }
 
     public String generateCommentId(String _id) {

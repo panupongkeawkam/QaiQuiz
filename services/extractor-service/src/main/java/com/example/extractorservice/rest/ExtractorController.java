@@ -12,15 +12,6 @@ import java.util.*;
 @CrossOrigin
 public class ExtractorController {
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public List<String> get() {
-
-        List<String> list = new ArrayList<>();
-        list.add("game");
-        list.add("fuck");
-        return list;
-    }
-
     @RequestMapping(value = "/filter", method = RequestMethod.PATCH)
     public ExtractedQuizModel getFilteredQuizzes(@RequestBody FilterQuizRestModel body) {
         ManagedChannel channel = ManagedChannelBuilder

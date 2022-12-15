@@ -27,10 +27,6 @@ public class UserCommandController {
         this.commandGateway = commandGateway;
     }
 
-    @GetMapping
-    public Date getTime() {
-        return new Date();
-    }
 
     @PostMapping
     public UserModel createUser() {
